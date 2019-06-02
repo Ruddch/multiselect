@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import capitalize from 'lodash/capitalize'
 
 class Search extends Component {
     handleChange = e => {
@@ -8,9 +9,9 @@ class Search extends Component {
     render() {
         const selectedUsers = this.props.selected.map(u => (
             <div className='user' key={u.id}>
-                <span>{u.name + ' '}</span>
+                <span>{capitalize(u.name) + ' '}</span>
 
-                <span>{u.surname}</span>
+                <span>{capitalize(u.surname)}</span>
             </div>
         ));
         return <div className='search'>
