@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "convert-layout": "^0.8.0",
+    "gh-pages": "^2.0.1",
     "keyboard-layout-switch": "^0.0.2",
     "lodash": "^4.17.11",
     "react": "^16.8.6",
@@ -17,11 +18,14 @@
     "start-js": "react-scripts start",
     "build-js": "react-scripts build",
     "build": "npm-run-all build:css build-js",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "https://ruddch.github.io/multiselect/",
   "browserslist": {
     "production": [
       ">0.2%",
