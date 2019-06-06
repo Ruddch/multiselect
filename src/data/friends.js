@@ -31,4 +31,36 @@ export default [
         online: 'mobile',
         id: 'asdas5',
     },
+    {
+        name: 'андрей',
+        surname: 'гло',
+        avatarSrc: 'https://www.rpnation.com/data/avatars/o/56/56258.jpg',
+        online: 'mobile',
+        id: 'asdas6',
+    },
+    {
+        name: 'витек',
+        surname: 'virtual',
+        online: 'desktop',
+        id: 'asdas7',
+    },
+    {
+        name: 'Borya',
+        surname: 'гора',
+        online: '',
+        id: 'asdas8',
+    },
+    {
+        name: 'Катя',
+        surname: 'егорова',
+        online: '',
+        id: 'asdas9',
+    },
+    {
+        name: 'Ярослав',
+        surname: 'Филипович',
+        avatarSrc: 'https://www.tscollection.ru/data/images/man.png',
+        online: 'mobile',
+        id: 'asdas10',
+    },
 ]

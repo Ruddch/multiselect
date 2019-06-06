@@ -1,10 +1,36 @@
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
 .GroupCreation {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     background: #fff;
     border: 1px solid #e7e8ec;
     font-size: 12.5px;
     font-family: Roboto, Open Sans, Helvetica Neue, sans-serif;
     width: 100%;
+    height: 70vh;
     max-width: 500px;
     header {
         display: flex;
@@ -41,15 +67,16 @@
 
     .search {
         box-sizing: border-box;
-        display: flex;
-        flex-wrap: wrap;
         padding: 0.3em 0.7em;
         font-size: 12.5px;
-        align-items: baseline;
         width: 100%;
         border: none;
         border-bottom: 1px solid #e7e8ec;
 
+        .flexContainer {
+            flex-wrap: wrap;
+            align-items: baseline;
+        }
         & .user {
             background: #dae2ea;
             color: #55677d;
@@ -59,8 +86,9 @@
         }
 
         & .searchInput {
+            flex: 1;
             border: none;
-            width: 15em;
+            min-width: 14em;
             padding: 0.3em 0.7em;
             margin: 0.25em 0;
             font-size: 12.5px;
@@ -70,10 +98,35 @@
         }
     }
 
+    .emptyResult {
+        flex: 0 1 100%;
+        display: flex;
+
+        span {
+            margin: auto;
+        }
+    }
+    .scrollWrap {
+        flex: 0 1 100%;
+        overflow: hidden;
+        position: relative;
+
+        .fakeScroll {
+            position: absolute;
+            right: 1px;
+            height: 10px;
+            width: 3px;
+            background-color: #5181b8;
+            border-radius: 10%;
+            transition: opacity .3s ease-in-out;
+        }
+    }
     .friendsList {
-        max-height: 50vh;
+        position: relative;
+        height: 100%;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: scroll;
+        width: 103%;
 
         .user {
             display: flex;
@@ -86,6 +139,10 @@
                 border: none;
             }
 
+            &:focus {
+                outline: none;
+                background-color: #f0f2f5;
+            }
             &:hover {
                 background-color: #f0f2f5;
             }
@@ -146,11 +203,12 @@
     }
 
     footer {
-        display: flex;
-        justify-content: flex-end;
         padding: 0.5em 1em;
         border-top: 1px solid #e7e8ec;
 
+        .flexContainer {
+            justify-content: flex-end;
+        }
         .button {
             display: inline-block;
             padding: 7px 16px 8px;
@@ -166,5 +224,9 @@
                 opacity: 0.7;
             }
         }
+    }
+
+    .flexContainer {
+        display: flex;
     }
 }

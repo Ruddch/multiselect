@@ -1,13 +1,39 @@
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
 .GroupCreation {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     background: #fff;
     border: 1px solid #e7e8ec;
     font-size: 12.5px;
     font-family: Roboto, Open Sans, Helvetica Neue, sans-serif;
     width: 100%;
+    height: 70vh;
     max-width: 500px;
 }
-    .GroupCreation header {
+.GroupCreation header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -15,15 +41,15 @@
         background: #F9FAFC;
         border-bottom: 1px solid #e7e8ec;
     }
-    .GroupCreation header .title {
+.GroupCreation header .title {
             font-weight: bold;
         }
-    .GroupCreation header .closeButton {
+.GroupCreation header .closeButton {
             position: relative;
             width: 1em;
             height: 1em;
         }
-    .GroupCreation header .closeButton:before, .GroupCreation header .closeButton:after {
+.GroupCreation header .closeButton:before, .GroupCreation header .closeButton:after {
                 position: absolute;
                 left: 42%;
                 content: ' ';
@@ -31,46 +57,71 @@
                 width: 16%;
                 background-color: #5181b8;
             }
-    .GroupCreation header .closeButton:before {
+.GroupCreation header .closeButton:before {
                 transform: rotate(45deg);
             }
-    .GroupCreation header .closeButton:after {
+.GroupCreation header .closeButton:after {
                 transform: rotate(-45deg);
             }
-    .GroupCreation .search {
+.GroupCreation .search {
         box-sizing: border-box;
-        display: flex;
-        flex-wrap: wrap;
         padding: 0.3em 0.7em;
         font-size: 12.5px;
-        align-items: baseline;
         width: 100%;
         border: none;
         border-bottom: 1px solid #e7e8ec;
     }
-    .GroupCreation .search .user {
+.GroupCreation .search .flexContainer {
+            flex-wrap: wrap;
+            align-items: baseline;
+        }
+.GroupCreation .search .user {
             background: #dae2ea;
             color: #55677d;
             padding: 0.3em 0.7em;
             border-radius: 4px;
             margin: 0.25em 0.5em 0.25em 0;
         }
-    .GroupCreation .search .searchInput {
+.GroupCreation .search .searchInput {
+            flex: 1;
             border: none;
-            width: 15em;
+            min-width: 14em;
             padding: 0.3em 0.7em;
             margin: 0.25em 0;
             font-size: 12.5px;
         }
-    .GroupCreation .search .searchInput:focus {
+.GroupCreation .search .searchInput:focus {
                 outline: none;
             }
-    .GroupCreation .friendsList {
-        max-height: 50vh;
-        overflow-x: hidden;
-        overflow-y: auto;
+.GroupCreation .emptyResult {
+        flex: 0 1 100%;
+        display: flex;
     }
-    .GroupCreation .friendsList .user {
+.GroupCreation .emptyResult span {
+            margin: auto;
+        }
+.GroupCreation .scrollWrap {
+        flex: 0 1 100%;
+        overflow: hidden;
+        position: relative;
+    }
+.GroupCreation .scrollWrap .fakeScroll {
+            position: absolute;
+            right: 1px;
+            height: 10px;
+            width: 3px;
+            background-color: #5181b8;
+            border-radius: 10%;
+            transition: opacity .3s ease-in-out;
+        }
+.GroupCreation .friendsList {
+        position: relative;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        width: 103%;
+    }
+.GroupCreation .friendsList .user {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -78,24 +129,28 @@
             border-bottom: 1px solid #e7e8ec;
             cursor: pointer;
         }
-    .GroupCreation .friendsList .user:last-child {
+.GroupCreation .friendsList .user:last-child {
                 border: none;
             }
-    .GroupCreation .friendsList .user:hover {
+.GroupCreation .friendsList .user:focus {
+                outline: none;
                 background-color: #f0f2f5;
             }
-    .GroupCreation .friendsList .user .userWrap {
+.GroupCreation .friendsList .user:hover {
+                background-color: #f0f2f5;
+            }
+.GroupCreation .friendsList .user .userWrap {
                 display: flex;
                 align-items: center;
             }
-    .GroupCreation .friendsList .user .userWrap .avatar {
+.GroupCreation .friendsList .user .userWrap .avatar {
                     position: relative;
                     width: 3em;
                     height: 3em;
                     border-radius: 50%;
                     background-size: 45%;
                 }
-    .GroupCreation .friendsList .user .userWrap .avatar.desktop:after {
+.GroupCreation .friendsList .user .userWrap .avatar.desktop:after {
                         position: absolute;
                         bottom: 1.25%;
                         right: 6.25%;
@@ -106,7 +161,7 @@
                         border-radius: 50%;
                         background: #96C68F;
                     }
-    .GroupCreation .friendsList .user .userWrap .avatar.mobile:after {
+.GroupCreation .friendsList .user .userWrap .avatar.mobile:after {
                         position: absolute;
                         bottom: 1.25%;
                         right: 6.25%;
@@ -120,28 +175,29 @@
                         background: #fff;
                         box-shadow: 0px 0px 0px 1px #fff;
                     }
-    .GroupCreation .friendsList .user .userWrap .fullName {
+.GroupCreation .friendsList .user .userWrap .fullName {
                     font-weight: 500;
                     color: #2a5885;
                     margin: 0 10px;
                 }
-    .GroupCreation .friendsList .user .select {
+.GroupCreation .friendsList .user .select {
                 width: 15px;
                 height: 15px;
                 border: 1px solid #e7e8ec;
                 border-radius: 50%;
                 background-color: #fff;
             }
-    .GroupCreation .friendsList .user .select.checked {
+.GroupCreation .friendsList .user .select.checked {
                     background-color: #5181b8;
                 }
-    .GroupCreation footer {
-        display: flex;
-        justify-content: flex-end;
+.GroupCreation footer {
         padding: 0.5em 1em;
         border-top: 1px solid #e7e8ec;
     }
-    .GroupCreation footer .button {
+.GroupCreation footer .flexContainer {
+            justify-content: flex-end;
+        }
+.GroupCreation footer .button {
             display: inline-block;
             padding: 7px 16px 8px;
             font-size: 12.5px;
@@ -151,7 +207,10 @@
             color: #fff;
             border-radius: 4px;
         }
-    .GroupCreation footer .button.disabled {
+.GroupCreation footer .button.disabled {
                 cursor: default;
                 opacity: 0.7;
             }
+.GroupCreation .flexContainer {
+        display: flex;
+    }

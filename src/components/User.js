@@ -17,10 +17,23 @@ class User extends Component {
         }
     }
 
+    handleBSPress = (e) => {
+        const {selected, onSelectedChanged} = this.props;
+        if (e.key === 'Backspace') {
+            e.preventDefault();
+            e.stopPropagation();
+            onSelectedChanged(selected.slice(0, -1))
+        }
+    }
+
     render() {
         const {avatarSrc, name, surname, online} = this.props.user;
         return (
-            <div className='user' onClick={this.handleSelectionChanged}>
+            <div className='user'
+                tabIndex='0'
+                onKeyPress={this.handleSelectionChanged}
+                onKeyDown={this.handleBSPress}
+                onClick={this.handleSelectionChanged}>
                 <div className='userWrap'>
                     <Avatar src={avatarSrc} online={online}/>
                     <div className='fullName'>
