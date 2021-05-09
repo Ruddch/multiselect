@@ -6,7 +6,7 @@
     "convert-layout": "^0.8.0",
     "gh-pages": "^2.0.1",
     "keyboard-layout-switch": "^0.0.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
